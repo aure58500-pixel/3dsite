@@ -99,3 +99,8 @@ Le site est publié par GitHub Actions (`.github/workflows/deploy.yml`) à chaqu
 Le chemin de base `/3dsite/` est défini par `base` dans `vite.config.ts`. Si le dépôt est renommé, mettez-le à jour.
 
 Remarque : il n'y a pas encore de `package-lock.json`, donc le workflow utilise `npm install`. Générez le lockfile avec `npm install`, commitez-le, puis remplacez par `npm ci` dans le workflow pour des builds reproductibles.
+
+## Dépannage
+
+- **Page noire ou 404 sur GitHub Pages** : dans **Settings → Pages**, la source doit être **GitHub Actions** (et non « Deploy from a branch »). Le site est servi à l’adresse https://aure58500-pixel.github.io/3dsite/ (avec le `/3dsite/` final).
+- **Écran noir sur iPhone** : l’application affiche désormais un message de secours lisible si une erreur survient. Si la page reste noire, rechargez sans cache et consultez la console Safari (Réglages → Safari → Avancé → Inspecteur web).

@@ -26,7 +26,9 @@ export function useLineReveal(ref: RefObject<HTMLElement | null>, enabled = true
       lines.set(mask.offsetTop, group)
     })
 
-    const context = gsap.context(() => {
+    let context: gsap.Context | null = null
+    try {
+      context = gsap.context(() => {
       const timeline = gsap.timeline({
         scrollTrigger: { trigger: element, start: 'top 88%', once: true },
       })
@@ -39,7 +41,13 @@ export function useLineReveal(ref: RefObject<HTMLElement | null>, enabled = true
             index * LINE_STAGGER,
           )
         })
-    })
-    return () => context.revert()
+      })
+    } catch (error) {
+      console.error('useLineReveal', error)
+      context?.revert()
+      lines.forEach((inners) => inners.forEach((inner) => (inner.style.transform = '')))
+      return
+    }
+    return () => context?.revert()
   }, [ref, reduced, enabled])
 }

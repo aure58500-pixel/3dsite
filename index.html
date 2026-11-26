@@ -14,7 +14,36 @@
     <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='9' fill='%23FF5A1F'/%3E%3C/svg%3E" />
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <div id="static-boot" style="min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px;text-align:center;background:#07070A;color:#EDEDE8;font-family:-apple-system,BlinkMacSystemFont,'Helvetica Neue',Arial,sans-serif">
+        <p style="margin:0 0 12px;font-size:28px;font-weight:600">Orbite Studio</p>
+        <p id="static-boot-msg" style="margin:0;font-size:16px;opacity:.7">Chargement de l’expérience…</p>
+      </div>
+    </div>
+    <noscript>
+      <div style="position:fixed;top:0;left:0;right:0;padding:24px;text-align:center;background:#07070A;color:#EDEDE8;font-family:-apple-system,Arial,sans-serif">
+        Orbite Studio : JavaScript est nécessaire pour afficher ce site. Activez-le puis rechargez la page.
+      </div>
+    </noscript>
+    <script>
+      (function () {
+        function showError() {
+          var root = document.getElementById('root');
+          if (!root || root.getAttribute('data-mounted') === 'true') return;
+          var msg = document.getElementById('static-boot-msg');
+          if (msg) {
+            msg.innerHTML = 'Le site n’a pas pu se charger. Rechargez la page ou ouvrez-la dans Safari.';
+            msg.style.opacity = '1';
+          }
+        }
+        window.addEventListener('error', function () { showError(); });
+        window.addEventListener('unhandledrejection', function () { showError(); });
+        window.setTimeout(function () {
+          var root = document.getElementById('root');
+          if (root && root.getAttribute('data-mounted') !== 'true') showError();
+        }, 8000);
+      })();
+    </script>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

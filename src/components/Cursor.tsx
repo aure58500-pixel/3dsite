@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react'
 import gsap from 'gsap'
 import { DURATION, EASE } from '../config/timing'
 import { useReducedMotion } from '../hooks/useReducedMotion'
+import { mediaMatches } from '../lib/media'
 
 const FINE_POINTER = '(hover: hover) and (pointer: fine)'
 const INTERACTIVE = 'a, button, [data-cursor]'
@@ -9,7 +10,7 @@ const INTERACTIVE = 'a, button, [data-cursor]'
 /** Point qui suit la souris avec retard, uniquement sur appareils à pointeur précis */
 export function Cursor() {
   const reduced = useReducedMotion()
-  const [enabled] = useState(() => window.matchMedia(FINE_POINTER).matches)
+  const [enabled] = useState(() => mediaMatches(FINE_POINTER))
   const dotRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
