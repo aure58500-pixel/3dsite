@@ -43,6 +43,44 @@
     outline: 2px solid var(--accent);
     outline-offset: 3px;
   }
+
+  h1,
+  h2,
+  h3 {
+    text-wrap: balance;
+    font-weight: 400;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* Composants typographiques et boutons partagés */
+@layer components {
+  .eyebrow {
+    @apply text-eyebrow uppercase text-muted;
+  }
+
+  .section-y {
+    @apply py-24 md:py-40;
+  }
+
+  .hairline {
+    @apply border-t border-line;
+  }
+
+  .btn {
+    @apply inline-flex min-h-[48px] items-center justify-center rounded-full px-8 text-base font-medium transition-colors duration-fast ease-entrance;
+  }
+
+  .btn-primary {
+    @apply btn bg-accent text-bg hover:bg-ink;
+  }
+
+  .btn-ghost {
+    @apply btn border border-ink/40 text-ink hover:border-ink hover:bg-ink hover:text-bg;
+  }
 }
 
 /* Grain de film : bruit SVG en mosaïque, animé par pas */

@@ -28,10 +28,10 @@ export function Services() {
   }
 
   return (
-    <section ref={ref} id="services" aria-labelledby="services-title" className="py-24 md:py-40">
+    <section ref={ref} id="services" aria-labelledby="services-title" className="section-y">
       <div className="grid-12">
-        <LineTitle id="services-title" text={fr.services.title} className="col-span-12 mb-12 font-display text-4xl md:text-6xl lg:col-span-4" />
-        <ul ref={listRef} onKeyDown={onKeyDown} className="col-span-12 list-none p-0 lg:col-span-8">
+        <LineTitle id="services-title" text={fr.services.title} className="col-span-12 mb-10 font-display text-title lg:col-span-5 lg:mb-0" />
+        <ul ref={listRef} onKeyDown={onKeyDown} className="col-span-12 m-0 list-none p-0 lg:col-span-6 lg:col-start-7">
           {fr.services.items.map((item, index) => (
             <ServiceItem
               key={item.title}

@@ -90,10 +90,10 @@ export function Loader() {
       ref={rootRef}
       role="status"
       aria-label={fr.loader.label}
-      className="fixed inset-0 z-[60] flex items-end justify-between bg-bg p-6 md:p-10"
+      className="fixed inset-0 z-[60] flex items-end justify-between gap-6 bg-bg p-5 md:p-10"
     >
-      <p className="text-sm uppercase tracking-widest text-muted">{fr.loader.label}</p>
-      <p aria-hidden="true" className="font-display text-7xl tabular-nums md:text-9xl">
+      <p className="eyebrow">{fr.loader.label}</p>
+      <p aria-hidden="true" className="font-display text-7xl leading-none tabular-nums tracking-tight md:text-9xl">
         <span ref={countRef}>0</span>
       </p>
     </div>

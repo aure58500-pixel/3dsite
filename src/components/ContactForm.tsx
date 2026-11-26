@@ -14,7 +14,7 @@ const EMPTY: ContactValues = { name: '', email: '', message: '' }
 const FIELDS = ['name', 'email', 'message'] as const
 
 const inputClass =
-  'w-full rounded-sm border border-line bg-transparent px-4 py-3 text-ink placeholder:text-muted aria-[invalid=true]:border-accent'
+  'min-h-[52px] w-full rounded-md border border-line bg-ink/[0.03] px-4 py-3 text-base text-ink transition-colors duration-fast placeholder:text-muted hover:border-ink/40 focus:border-ink aria-[invalid=true]:border-accent read-only:opacity-70'
 
 export function ContactForm() {
   const [values, setValues] = useState<ContactValues>(EMPTY)
@@ -55,7 +55,7 @@ export function ContactForm() {
   const sending = status === 'sending'
 
   return (
-    <form ref={formRef} onSubmit={onSubmit} noValidate aria-busy={sending} className="flex flex-col gap-6">
+    <form ref={formRef} onSubmit={onSubmit} noValidate aria-busy={sending} className="flex flex-col gap-7">
       {FIELDS.map((field) => {
         const error = errors[field]
         const errorId = `contact-${field}-error`
@@ -73,7 +73,7 @@ export function ContactForm() {
         const onChange = (value: string): void => setValues((prev) => ({ ...prev, [field]: value }))
         return (
           <div key={field} className="flex flex-col gap-2">
-            <label htmlFor={common.id} className="text-sm uppercase tracking-widest text-muted">
+            <label htmlFor={common.id} className="eyebrow">
               {fr.contact.fields[field]}
             </label>
             {field === 'message' ? (
@@ -94,16 +94,16 @@ export function ContactForm() {
           </div>
         )
       })}
-      <div className="flex flex-wrap items-center gap-4">
+      <div className="mt-1 flex flex-wrap items-center gap-x-6 gap-y-4">
         <button
           type="submit"
           data-cursor
           aria-disabled={sending}
-          className="rounded-full bg-accent px-8 py-3 font-medium text-bg transition-opacity duration-fast hover:opacity-90 aria-disabled:opacity-60"
+          className="btn-primary w-full xs:w-auto aria-disabled:cursor-wait aria-disabled:opacity-60"
         >
           {sending ? fr.contact.sending : status === 'error' ? fr.contact.retry : fr.contact.submit}
         </button>
-        <p role="status" aria-live="polite" className={status === 'error' ? 'text-accent' : 'text-muted'}>
+        <p role="status" aria-live="polite" className={`text-sm ${status === 'error' ? 'text-accent' : 'text-ink'}`}>
           {status === 'success' && fr.contact.success}
           {status === 'error' && fr.contact.failure}
         </p>

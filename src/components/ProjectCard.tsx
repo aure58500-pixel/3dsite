@@ -31,14 +31,14 @@ export function ProjectCard({ project, index, className = '', onOpen }: ProjectC
         onPointerLeave={() => setHoveredProject(null)}
         onFocus={() => setHoveredProject(index)}
         onBlur={() => setHoveredProject(null)}
-        className="group block w-full text-left"
+        className="group block w-full rounded-sm text-left"
       >
-        <ProjectVisual project={project} className="aspect-[4/3] w-full rounded-sm" />
-        <span className="mt-4 flex items-baseline justify-between gap-4">
-          <span className="font-display text-2xl md:text-3xl">{text.title}</span>
-          <span className="text-sm text-muted">{project.year}</span>
+        <ProjectVisual project={project} className="aspect-[4/3] w-full rounded-sm transition-colors duration-base ease-transition group-hover:border-ink/40" />
+        <span className="mt-5 flex items-baseline justify-between gap-4">
+          <span className="font-display text-2xl tracking-tight md:text-3xl">{text.title}</span>
+          <span className="text-sm tabular-nums text-muted">{project.year}</span>
         </span>
-        <span className="mt-1 block text-sm uppercase tracking-widest text-muted">{text.category}</span>
+        <span className="eyebrow mt-2 block">{text.category}</span>
       </button>
     </li>
   )

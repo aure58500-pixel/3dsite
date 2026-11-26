@@ -83,29 +83,29 @@ export function ProjectPanel({ project, onClose }: ProjectPanelProps) {
         aria-modal="true"
         aria-labelledby="project-panel-title"
         data-lenis-prevent
-        className="absolute inset-y-0 right-0 w-full max-w-xl overflow-y-auto border-l border-line bg-[#0D0D12] p-6 md:p-10"
+        className="absolute inset-y-0 right-0 w-full max-w-xl overflow-y-auto border-l border-line bg-surface p-6 pb-10 md:p-10"
       >
         <button
           ref={closeRef}
           type="button"
           onClick={requestClose}
-          className="mb-6 rounded-sm px-2 py-2 text-sm uppercase tracking-widest text-muted hover:text-ink"
+          className="eyebrow -ml-2 mb-6 inline-flex min-h-11 items-center rounded-sm px-2 transition-colors duration-fast hover:text-ink"
         >
           {fr.work.close}
         </button>
         <ProjectVisual project={project} className="aspect-[4/3] w-full rounded-sm" />
-        <p className="mt-6 text-sm uppercase tracking-widest text-muted">
+        <p className="eyebrow mt-8">
           {text.category} &middot; {fr.work.year} {project.year}
         </p>
-        <h3 id="project-panel-title" className="mt-2 font-display text-4xl md:text-5xl">
+        <h3 id="project-panel-title" className="mt-3 font-display text-4xl tracking-tight md:text-5xl">
           {text.title}
         </h3>
-        <p className="mt-4 text-lg text-muted">{text.description}</p>
-        <dl className="mt-8 grid grid-cols-1 gap-6 border-t border-line pt-6 xs:grid-cols-3">
+        <p className="mt-5 text-lead text-muted">{text.description}</p>
+        <dl className="hairline mt-10 grid grid-cols-1 gap-6 pt-6 xs:grid-cols-3">
           {text.metrics.map((metric) => (
             <div key={metric.label} className="flex flex-col-reverse justify-end gap-1">
               <dt className="text-sm text-muted">{metric.label}</dt>
-              <dd className="m-0 font-display text-3xl" style={{ color: project.color }}>
+              <dd className="m-0 font-display text-3xl tabular-nums" style={{ color: project.color }}>
                 {metric.value}
               </dd>
             </div>

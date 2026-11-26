@@ -19,17 +19,21 @@ export function ProjectVisual({ project, className = '' }: ProjectVisualProps) {
   return (
     <div
       aria-hidden="true"
-      className={`relative overflow-hidden ${className}`}
+      className={`relative overflow-hidden border border-line ${className}`}
       style={{
-        background: `radial-gradient(circle at 25% 20%, ${color}55, transparent 55%), radial-gradient(circle at 80% 90%, ${color}33, transparent 50%), #0D0D12`,
+        background: `radial-gradient(circle at 25% 20%, ${color}44, transparent 55%), radial-gradient(circle at 80% 90%, ${color}26, transparent 50%), #0D0D12`,
       }}
     >
+      <div
+        className="absolute inset-0"
+        style={{ background: 'radial-gradient(ellipse at center, transparent 55%, rgba(7,7,10,0.55) 100%)' }}
+      />
       <div
         className="absolute left-1/2 top-1/2 aspect-square w-[46%] -translate-x-1/2 -translate-y-1/2 rotate-12 transition-transform duration-slow ease-entrance group-hover:rotate-[24deg] group-hover:scale-110"
         style={{
           borderRadius: shape[geometry],
           background: `${hole}conic-gradient(from 210deg, ${color}, #EDEDE8 30%, ${color}66 55%, ${color} 80%, #EDEDE8)`,
-          boxShadow: `0 0 80px ${color}66, inset 0 0 40px #07070A66`,
+          boxShadow: `0 24px 60px -10px ${color}55, inset -12px -16px 36px #07070A99, inset 8px 10px 24px #EDEDE822`,
         }}
       />
     </div>
