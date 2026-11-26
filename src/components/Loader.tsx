@@ -43,6 +43,7 @@ export function Loader() {
       forceReveal()
     }, FAILSAFE_MS)
 
+    const counter = { value: 0 }
     let timeline: gsap.core.Timeline
     try {
       setScrollLocked(true)
