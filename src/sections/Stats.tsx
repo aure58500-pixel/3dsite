@@ -12,13 +12,13 @@ export function Stats() {
   useFadeIn(textRef)
 
   return (
-    <section ref={ref} id="about" aria-labelledby="about-title" className="py-24 md:py-40">
+    <section ref={ref} id="about" aria-labelledby="about-title" className="section-y">
       <div className="grid-12">
-        <LineTitle id="about-title" text={fr.about.title} className="col-span-12 font-display text-4xl md:text-6xl lg:col-span-8" />
-        <p ref={textRef} className="col-span-12 mt-8 max-w-xl text-lg text-muted md:col-span-8 lg:col-span-5">
+        <LineTitle id="about-title" text={fr.about.title} className="col-span-12 font-display text-title lg:col-span-8" />
+        <p ref={textRef} className="col-span-12 mt-6 max-w-xl text-lead text-muted md:col-span-8 md:mt-8 lg:col-span-5">
           {fr.about.text}
         </p>
-        <dl className="col-span-12 mt-16 grid grid-cols-1 gap-8 xs:grid-cols-3">
+        <dl className="col-span-12 mt-14 grid grid-cols-1 gap-8 md:mt-20 xs:grid-cols-3 md:gap-12">
           {fr.about.stats.map((stat, index) => (
             <StatCounter key={stat.label} {...stat} delay={index * 0.1} />
           ))}

@@ -5,7 +5,7 @@ export function FallbackGradient() {
       className="pointer-events-none fixed inset-0 z-0"
       style={{
         background:
-          'radial-gradient(ellipse at 30% 20%, rgba(255,90,31,0.22), transparent 55%), radial-gradient(ellipse at 75% 70%, rgba(108,123,255,0.16), transparent 60%), #07070A',
+          'radial-gradient(ellipse 80% 60% at 25% 15%, rgba(255,90,31,0.14), transparent 60%), radial-gradient(ellipse 70% 60% at 80% 80%, rgba(108,123,255,0.1), transparent 65%), #07070A',
       }}
     />
   )

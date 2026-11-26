@@ -33,13 +33,13 @@ export function Projects() {
   const selected = openIndex === null ? undefined : PROJECTS[openIndex]
 
   return (
-    <section ref={ref} id="work" aria-labelledby="work-title" className="py-24 md:py-40">
+    <section ref={ref} id="work" aria-labelledby="work-title" className="section-y">
       <div className="grid-12">
         <div className="col-span-12 mb-16 lg:col-span-8">
-          <LineTitle id="work-title" text={fr.work.title} className="font-display text-4xl md:text-6xl" />
-          <p className="mt-4 max-w-md text-muted">{fr.work.intro}</p>
+          <LineTitle id="work-title" text={fr.work.title} className="font-display text-title" />
+          <p className="mt-5 max-w-md text-lead text-muted">{fr.work.intro}</p>
         </div>
-        <ul className="col-span-12 grid list-none grid-cols-12 gap-x-4 gap-y-16 p-0 md:gap-x-6">
+        <ul className="col-span-12 grid list-none grid-cols-12 gap-x-4 gap-y-14 p-0 md:gap-x-6 md:gap-y-20">
           {PROJECTS.map((project, index) => (
             <ProjectCard
               key={project.id}

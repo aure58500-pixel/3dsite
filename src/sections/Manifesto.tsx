@@ -10,9 +10,9 @@ export function Manifesto() {
   useWordReveal(textRef)
 
   return (
-    <section ref={ref} aria-label={fr.manifesto.label} className="py-32 md:py-48">
+    <section ref={ref} aria-label={fr.manifesto.label} className="section-y md:py-48">
       <div className="grid-12">
-        <p ref={textRef} className="col-span-12 font-display text-3xl leading-snug md:text-5xl lg:col-span-10 lg:col-start-2 lg:text-6xl">
+        <p ref={textRef} className="col-span-12 font-display text-statement lg:col-span-10 lg:col-start-2">
           {fr.manifesto.text.split(' ').map((word, index) => (
             <span key={index}>
               <span data-word className="opacity-20">

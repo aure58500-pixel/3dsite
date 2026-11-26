@@ -5,7 +5,7 @@ interface Metric {
 
 export interface Dictionary {
   loader: { label: string }
-  nav: { label: string; home: string; work: string; services: string; about: string; contact: string; skip: string }
+  nav: { label: string; home: string; work: string; services: string; about: string; contact: string; skip: string; menuOpen: string; menuClose: string }
   hero: { eyebrow: string; title: string; subtitle: string; cta: string; scroll: string }
   manifesto: { label: string; text: string }
   work: {
@@ -44,6 +44,8 @@ export const fr: Dictionary = {
     about: 'Studio',
     contact: 'Contact',
     skip: 'Aller au contenu',
+    menuOpen: 'Menu',
+    menuClose: 'Fermer',
   },
   hero: {
     eyebrow: 'Studio de création numérique',

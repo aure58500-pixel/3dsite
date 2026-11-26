@@ -18,7 +18,7 @@ export function ServiceItem({ index, title, description, open, onToggle }: Servi
   const panelId = `service-panel-${index}`
 
   return (
-    <li ref={rootRef} className="border-t border-line last:border-b">
+    <li ref={rootRef} className="hairline last:border-b">
       <h3>
         <button
           id={triggerId}
@@ -27,15 +27,18 @@ export function ServiceItem({ index, title, description, open, onToggle }: Servi
           aria-expanded={open}
           aria-controls={panelId}
           onClick={onToggle}
-          className="flex w-full items-center gap-4 py-6 text-left md:gap-6"
+          className="group flex min-h-[72px] w-full items-center gap-4 py-5 text-left md:gap-6 md:py-7"
         >
           <ServiceIcon kind={index} open={open} />
-          <span className="flex-1 font-display text-2xl md:text-4xl">{title}</span>
+          <span className="flex-1 font-display text-2xl tracking-tight md:text-3xl">{title}</span>
           <span
             aria-hidden="true"
-            className={`text-2xl text-muted transition-transform duration-base ease-transition ${open ? 'rotate-45' : ''}`}
+            className={`relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full border transition-colors duration-fast ease-entrance group-hover:border-ink ${open ? 'border-ink' : 'border-line'}`}
           >
-            +
+            <span className="absolute h-px w-3.5 bg-ink" />
+            <span
+              className={`absolute h-3.5 w-px bg-ink transition-transform duration-base ease-transition ${open ? 'scale-y-0' : ''}`}
+            />
           </span>
         </button>
       </h3>
@@ -46,7 +49,7 @@ export function ServiceItem({ index, title, description, open, onToggle }: Servi
         className={`grid transition-[grid-template-rows] duration-base ease-transition ${open ? 'grid-rows-[1fr]' : 'grid-rows-[0fr]'}`}
       >
         <div className="overflow-hidden">
-          <p className={`max-w-xl pb-6 pl-12 text-muted md:pl-14 ${open ? '' : 'invisible'}`}>{description}</p>
+          <p className={`max-w-xl pb-7 pl-12 text-base text-muted md:pl-14 ${open ? '' : 'invisible'}`}>{description}</p>
         </div>
       </div>
     </li>
