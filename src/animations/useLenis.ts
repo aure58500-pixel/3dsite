@@ -34,14 +34,24 @@ export function useLenis(): void {
       return () => window.removeEventListener('scroll', onScroll)
     }
 
-    const lenis = new Lenis({ lerp: 0.1, smoothWheel: true })
+    let lenis: Lenis
+    try {
+      lenis = new Lenis({ lerp: 0.1, smoothWheel: true })
+    } catch (error) {
+      // Lenis ne doit jamais bloquer le défilement : on retombe sur le natif
+      console.error('Lenis', error)
+      instance = null
+      const onScroll = (): void => setScrollProgress(nativeProgress())
+      window.addEventListener('scroll', onScroll, { passive: true })
+      return () => window.removeEventListener('scroll', onScroll)
+    }
     instance = lenis
     if (locked) lenis.stop()
     lenis.on('scroll', () => {
       ScrollTrigger.update()
       setScrollProgress(lenis.progress)
     })
-    void document.fonts.ready.then(() => ScrollTrigger.refresh())
+    document.fonts?.ready?.then(() => ScrollTrigger.refresh()).catch(() => undefined)
     const tick = (time: number): void => lenis.raf(time * 1000)
     gsap.ticker.add(tick)
     gsap.ticker.lagSmoothing(0)

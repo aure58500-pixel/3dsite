@@ -18,7 +18,9 @@ export function useWordReveal(ref: RefObject<HTMLElement | null>): void {
       gsap.set(words, { opacity: 1 })
       return
     }
-    const context = gsap.context(() => {
+    let context: gsap.Context | null = null
+    try {
+      context = gsap.context(() => {
       gsap.fromTo(
         words,
         { opacity: 0.2 },
@@ -30,7 +32,13 @@ export function useWordReveal(ref: RefObject<HTMLElement | null>): void {
           scrollTrigger: { trigger: element, start: 'top 75%', end: 'bottom 45%', scrub: true },
         },
       )
-    })
-    return () => context.revert()
+      })
+    } catch (error) {
+      console.error('useWordReveal', error)
+      context?.revert()
+      words.forEach((word) => (word.style.opacity = ''))
+      return
+    }
+    return () => context?.revert()
   }, [ref, reduced])
 }

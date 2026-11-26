@@ -1,14 +1,10 @@
 import { useSyncExternalStore } from 'react'
+import { mediaMatches, subscribeMedia } from '../lib/media'
 
 const QUERY = '(prefers-reduced-motion: reduce)'
 
-function subscribe(callback: () => void): () => void {
-  const mql = window.matchMedia(QUERY)
-  mql.addEventListener('change', callback)
-  return () => mql.removeEventListener('change', callback)
-}
-
-const getSnapshot = (): boolean => window.matchMedia(QUERY).matches
+const subscribe = (callback: () => void): (() => void) => subscribeMedia(QUERY, callback)
+const getSnapshot = (): boolean => mediaMatches(QUERY)
 const getServerSnapshot = (): boolean => false
 
 export function useReducedMotion(): boolean {

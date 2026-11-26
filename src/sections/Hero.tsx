@@ -14,7 +14,7 @@ export function Hero() {
   useFadeIn(introRef, 0.3, revealed)
 
   return (
-    <section ref={ref} id="hero" aria-labelledby="hero-title" className="relative flex min-h-[100svh] items-end pb-16 pt-32">
+    <section ref={ref} id="hero" aria-labelledby="hero-title" className="relative flex min-h-screen min-h-[100svh] items-end pb-16 pt-32">
       <div className="grid-12 w-full">
         <p className="col-span-12 mb-6 text-sm uppercase tracking-widest text-accent">{fr.hero.eyebrow}</p>
         <LineTitle
