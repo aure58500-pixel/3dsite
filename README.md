@@ -88,3 +88,14 @@ Tous les textes sont dans `src/i18n/fr.ts`, typés par l'interface `Dictionary`.
 - Navigation clavier complète, focus visible, panneau de projet avec piège de focus et fermeture par Échap, accordéon ARIA.
 - Le formulaire de contact est une démonstration : aucun envoi réel, et le message de succès l'indique. L'état d'erreur n'apparaît que lorsque le navigateur est hors ligne.
 - Le panneau de projet est rendu dans `document.body` et bloque aussi Lenis (`setScrollLocked`).
+
+## Déploiement (GitHub Pages)
+
+Le site est publié par GitHub Actions (`.github/workflows/deploy.yml`) à chaque push sur `main`, ou manuellement via « Run workflow ». Adresse : https://aure58500-pixel.github.io/Site-3D-/
+
+1. Dans le dépôt GitHub : **Settings → Pages → Source : GitHub Actions**.
+2. Poussez sur `main` (ou lancez le workflow depuis l'onglet Actions).
+
+Le chemin de base `/Site-3D-/` est défini par `base` dans `vite.config.ts`. Si le dépôt est renommé, mettez-le à jour.
+
+Remarque : il n'y a pas encore de `package-lock.json`, donc le workflow utilise `npm install`. Générez le lockfile avec `npm install`, commitez-le, puis remplacez par `npm ci` dans le workflow pour des builds reproductibles.
